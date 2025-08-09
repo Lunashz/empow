@@ -1,279 +1,261 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dsell - Online Shop</title>
+    <meta charset="UTF-8" />
+    <title>STEM 12 A's CUSTOM CUP CO.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <style>
+        :root {
+            --brand:#0B6E4F;
+            --accent:#FF6F61;
+            --muted:#6b6b6b;
+            --card:#ffffff;
+            --radius:12px;
+            --max-width:1100px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-size: 16px;
+        }
+        * { box-sizing:border-box; }
+        html, body { margin:0; padding:0; }
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f7f7f7;
+            background: linear-gradient(180deg,#f5f7f8 0%, #ffffff 100%);
+            color:#222;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height: 1.5;
         }
+        img { max-width: 100%; height: auto; display: block; }
         header {
-            background: #FF6F61;
-            color: white;
-            padding: 15px;
-            text-align: center;
+            background: linear-gradient(90deg,var(--brand), #0a7a5a);
+            color:white; padding: 1rem;
+            box-shadow: 0 6px 18px rgba(9,30,30,0.12);
         }
-        nav {
-            background: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
+        .topbar { max-width: var(--max-width); margin: auto; display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .brand { display: flex; gap: 0.8rem; align-items: center; }
+        .logo {
+            flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; background: white; color: var(--brand); font-size: 1rem;
         }
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
+        h1 { margin: 0; font-size: clamp(1rem, 2vw, 1.2rem); }
+        .tag { font-size: clamp(0.75rem, 1.8vw, 0.85rem); opacity: 0.9; }
+        nav.primary { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        nav.primary a {
+            color: white; text-decoration: none; font-weight: 600;
+            padding: 0.5rem 0.75rem; border-radius: 8px; transition: background 0.18s;
+            font-size: 0.9rem;
         }
-        .container {
-            padding: 20px;
+        nav.primary a:hover { background: rgba(255,255,255,0.08); }
+        .container { max-width: var(--max-width); margin: auto; padding: 1rem; }
+        .hero { display: grid; grid-template-columns: 1fr 420px; gap: 1rem; align-items: start; }
+        .hero-card {
+            background: white; border-radius: var(--radius); padding: 1.2rem;
+            box-shadow: 0 8px 28px rgba(11, 110, 79, 0.06);
         }
-        .product {
-            border: 1px solid #ddd;
-            background: white;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .product h3 {
-            margin-top: 0;
-        }
-        .price {
-            color: green;
-            font-weight: bold;
-        }
+        .cta { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .btn {
-            padding: 10px 15px;
-            background: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
+            padding: 0.6rem 1rem; border-radius: 10px; border: none;
+            cursor: pointer; font-weight: 700; background: var(--brand);
+            color: white; font-size: 0.9rem;
         }
-        .btn:hover {
-            background: #218838;
+        .btn.secondary { background: transparent; color: var(--brand); border: 1px solid var(--brand); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+        .card {
+            background: var(--card); border-radius: 14px; overflow: hidden;
+            display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        footer {
-            background: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
+        .card-body { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        .product-title { font-size: 1rem; font-weight: 700; margin: 0; }
+        .product-desc { font-size: 0.85rem; color: var(--muted); }
+        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+        .price { color: var(--brand); font-weight: 800; }
+        footer { background: #f8f9fa; padding: 1rem; font-size: 0.8rem; }
+        .footer-inner { max-width: var(--max-width); margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+        .modal { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(10,10,10,0.45); padding: 28px; }
+        .modal.open { display: block; }
+        .modal-card {
+            max-width: 900px; background: white; margin: 40px auto; border-radius: 12px;
+            padding: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.18); max-height: 80vh; overflow: auto;
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 60%;
-            max-width: 600px;
-            border-radius: 8px;
-        }
-        .modal-content h2 {
-            margin-top: 0;
-        }
-        .modal-buttons {
-            margin-top: 20px;
-            text-align: right;
-        }
-        .accept-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        .reject-btn {
-            background-color: #dc3545;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+        @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            nav.primary { justify-content: center; gap: 0.25rem; }
+            .btn { flex: 1; text-align: center; }
+            .hero-card { padding: 1rem; }
         }
     </style>
 </head>
 <body>
+<header>
+    <div class="topbar">
+        <div class="brand">
+            <div class="logo">S12</div>
+            <div>
+                <h1>STEM 12 A's CUSTOM CUP CO.</h1>
+                <div class="tag">Customized tumblers made with care • Local & worldwide shipping</div>
+            </div>
+        </div>
+        <nav class="primary">
+            <a href="#products">Products</a>
+            <a href="#how">How It Works</a>
+            <a href="#policy" onclick="showTermsModal()">Policies</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div class="hero-card">
+            <h2>Make it yours — custom tumblers for every story</h2>
+            <p class="muted">From school clubs to corporate giveaways, STEM 12 A's Custom Cup Co. crafts durable tumblers that keep drinks cold or hot and showcase your design.</p>
+            <div class="cta">
+                <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Tumblers</button>
+                <button class="btn secondary" onclick="showTermsModal()">View Policies</button>
+            </div>
+        </div>
+        <div>
+            <img src="https://images.unsplash.com/photo-1600180758898-55e9b4b7a5aa?q=80&w=1600" alt="Sample tumbler">
+        </div>
+    </section>
+
+    <section id="products">
+        <h3>Featured Tumblers</h3>
+        <div class="products-grid">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1523381217067-3b4f5f10b41f?q=80&w=1600" alt="">
+                <div class="card-body">
+                    <h4 class="product-title">Classic Stainless 20oz</h4>
+                    <p class="product-desc">Perfect for logos and single-color prints.</p>
+                    <div class="price-row">
+                        <div class="price">₱420</div>
+                        <button class="btn" onclick="customize('Classic Stainless 20oz')">Customize</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="policy">
+        <h3>Policies & Terms</h3>
+        <p class="muted">Click <a href="#" onclick="showTermsModal()">here</a> to read our full Terms & Conditions.</p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div style="font-weight:800">STEM 12 A's CUSTOM CUP CO.</div>
+            <div class="small muted">Quality tumblers • Custom prints</div>
+        </div>
+        <div class="muted small">© <span id="year"></span> STEM 12 A's CUSTOM CUP CO. • All rights reserved.</div>
+    </div>
+</footer>
 
 <!-- Terms Modal -->
 <div id="termsModal" class="modal">
-    <div class="modal-content">
-        <h2>Terms & Conditions</h2>
-            <strong>Welcome to Dsell — Your Trusted Online Shopping Destination</strong>
-                <p>We provide high-quality products backed by reliable, responsive service to ensure 
-                customer satisfaction every step of the way.</p> 
-                  <p>By using Dsell, you agree to the following:</p>
-            </li>
-            <li><strong>Payment Policy</strong>
-                Secure payment methods include:
-                <ul>
-                    <li>Credit/Debit Cards</li>
-                    <li>Digital Wallets</li>
-                    <li>Bank Transfers</li>
-                    <li>PayPal</li>
-                    <li>Cash on Delivery (COD)</li>
-                </ul>
-                <strong>Important Notes:</strong>
-                <ul>
-                    <li>Payments must be made in full at the time of order placement.</li>
-                    <li>Orders are processed only after payment confirmation.</li>
-                    <li>Contact support within 7 days for billing issues.</li>
-                    <li>We reserve the right to cancel fraudulent orders.</li>
-                </ul>
-            </li>
-            <li><strong>Shipping Policy</strong><br>
-                <strong>Order Processing Time:</strong>
-                <ul><li>1–3 business days</li></ul>
-                <strong>Shipping Time:</strong>
-                <ul>
-                    <li>Standard: 5–14 business days</li>
-                    <li>Express: 2–7 business days</li>
-                </ul>
-                <strong>Shipping Rates:</strong>
-                <ul>
-                    <li>Calculated at checkout</li>
-                    <li>Free shipping may apply for select orders</li>
-                </ul>
-                <strong>Tracking:</strong>
-                <ul>
-                    <li>Tracking number provided upon shipping</li>
-                </ul>
-                <strong>Delays:</strong>
-                <ul>
-                    <li>Not responsible for customs/weather/address delays</li>
-                </ul>
-            </li>
-            <li><strong>Correctness of Information</strong>
-                <ul>
-                    <li>We try to ensure accuracy of product details and pricing.</li>
-                    <li>Errors may occur; we reserve the right to correct them without notice.</li>
-                    <li>You are responsible for verifying product suitability before ordering.</li>
-                </ul>
-            </li>
-            <li><strong>Disclaimer and Acceptance</strong>
-                <ul>
-                    <li>Use of the website is at your own risk.</li>
-                    <li>We provide content/services “as-is” with no guarantees.</li>
-                    <li>By using the site, you accept all terms and the Privacy Policy.</li>
-                </ul>
-            </li>
+    <div class="modal-card">
+        <h2>Terms & Conditions — STEM 12 A's CUSTOM CUP CO.</h2>
+        <p><strong>Business introduction</strong></p>
+        <p class="muted">STEM 12 A's Custom Cup Co. specializes in custom-printed stainless steel tumblers for personal, educational, and corporate use. We value clear communication, quality control, and timely delivery. These Terms ("Terms") describe your rights and responsibilities when ordering from us.</p>
+
+        <h3>Payment Policy</h3>
+        <ul class="muted">
+            <li>Accepted methods: major credit/debit cards, bank transfer, GCash, PayMaya, PayPal, and COD when offered.</li>
+            <li>Full payment or deposit required before production begins. Bulk orders require 50% deposit.</li>
+            <li>Refunds subject to payment processor timelines and production costs incurred.</li>
+            <li>We may decline or cancel orders suspected to be fraudulent.</li>
         </ul>
-        <div class="modal-buttons">
-            <button class="accept-btn" onclick="acceptTerms()">I Agree</button>
-            <button class="reject-btn" onclick="rejectTerms()">Reject</button>
+
+        <h3>Shipping & Delivery Policy</h3>
+        <ul class="muted">
+            <li>Production time: 3–7 business days for small orders, 7–14 days for large runs after approval.</li>
+            <li>Shipping time depends on carrier and location; tracking provided.</li>
+            <li>Shipping costs calculated at checkout; free shipping promos may exclude remote areas.</li>
+            <li>We are not responsible for delays caused by carriers, customs, or incorrect addresses.</li>
+            <li>Report damage/missing items within 48 hours with photos.</li>
+        </ul>
+
+        <h3>Correctness of Information</h3>
+        <ul class="muted">
+            <li>We try to ensure product info is accurate but variations may occur.</li>
+            <li>You must own or have rights to any artwork provided.</li>
+            <li>We may refuse orders if price or info errors occur; we will contact you if so.</li>
+        </ul>
+
+        <h3>Design Proofs & Approval</h3>
+        <ul class="muted">
+            <li>We provide digital proofs; production starts after written approval.</li>
+            <li>Post-approval changes may incur extra charges and delays.</li>
+        </ul>
+
+        <h3>Disclaimer & Limitation of Liability</h3>
+        <ul class="muted">
+            <li>Products are sold "as is." Minor imperfections that don't affect use are not defects.</li>
+            <li>Our liability is limited to the purchase price of the product.</li>
+        </ul>
+
+        <h3>Intellectual Property</h3>
+        <ul class="muted">
+            <li>You warrant you own or are licensed to use any content you upload.</li>
+            <li>We may refuse to print copyrighted/trademarked material without authorization.</li>
+        </ul>
+
+        <h3>Privacy & Communications</h3>
+        <ul class="muted">
+            <li>We collect only necessary info to process orders and provide service.</li>
+            <li>By ordering you agree to receive order-related communications.</li>
+        </ul>
+
+        <h3>Acceptance</h3>
+        <p class="muted">By using this site or placing an order, you agree to these Terms and our Privacy Policy. If you do not agree, do not use this site.</p>
+
+        <div class="modal-actions">
+            <button class="btn" onclick="acceptTerms()">I Agree</button>
+            <button class="btn secondary" onclick="rejectTerms()">I Do Not Agree</button>
         </div>
     </div>
 </div>
 
-<header>
-    <h1>Welcome to Dsell</h1>
-    <p>Your trusted online shopping platform</p>
-</header>
-
-<nav>
-    <a href="#products">Products</a>
-    <a href="#delivery">Delivery</a>
-    <a href="#cancel">Cancellation</a>
-    <a href="#terms">Terms</a>
-</nav>
-
-<div class="container">
-    <section id="products" class="section">
-        <h2>Our Products</h2>
-
-        <div class="product">
-            <h3>Stylish Hoodie</h3>
-            <img src="9c38ded943f61059191391fe47e9b11c.jpg" alt="Stylish Hoodie" width="250">
-            <p>Comfortable unisex hoodie perfect for any season.</p>
-            <p class="price">$29.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-
-        <div class="product">
-            <h3>Luxury Watch</h3>
-            <img src="huawei-watch-ultimate-r@2x.png" alt="Luxury Watch" width="250">
-            <p>Elegant watch with stainless steel strap and waterproof feature.</p>
-            <p class="price">$89.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-
-        <div class="product">
-            <h3>Samsung Galaxy S21</h3>
-            <img src="samsung-galaxy-s21-1.jpg" alt="Samsung Galaxy S21" width="250">
-            <p>High-performance smartphone with AMOLED display and triple camera.</p>
-            <p class="price">$699.00</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-    </section>
-
-    <section id="delivery" class="section">
-        <h2>Delivery Process</h2>
-        <ul>
-            <li>Order Confirmation via email</li>
-            <li>Item packed within 24 hours</li>
-            <li>Shipped via local courier</li>
-            <li>Delivery time 3–7 business days</li>
-            <li>Tracking number provided</li>
-        </ul>
-    </section>
-
-    <section id="cancel" class="section">
-        <h2>Cancellation Policy</h2>
-        <p>
-            Orders can be cancelled within 1 hour of placement. After shipping, cancellation is not guaranteed.
-            Please contact our support team via email or chat for assistance.
-        </p>
-    </section>
-
-    <section id="terms" class="section">
-        <h2>Terms & Conditions</h2>
-        <p>See popup at the beginning of your visit.</p>
-    </section>
-</div>
-
-<footer>
-    <p>© 2025 Dsell Online Shop. All rights reserved.</p>
-    <button onclick="showTermsModal()" style="margin-top:10px; background:#FF6F61; color:white; border:none; padding:10px 15px; cursor:pointer;">
-        View Terms & Conditions
-    </button>
-</footer>
-
 <script>
-    // Show modal when the page loads if not accepted yet
-    window.onload = function () {
-        const accepted = localStorage.getItem('dsellAcceptedTerms');
-        if (!accepted) {
-            document.getElementById('termsModal').style.display = 'block';
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const termsModal = document.getElementById('termsModal');
+    function showTermsModal(){ termsModal.classList.add('open'); }
+    function acceptTerms(){
+        localStorage.setItem('stem12AcceptedTerms', 'yes');
+        termsModal.classList.remove('open');
+    }
+    function rejectTerms(){
+        localStorage.removeItem('stem12AcceptedTerms');
+        termsModal.classList.remove('open');
+    }
+    function customize(name){
+        if (!localStorage.getItem('stem12AcceptedTerms')){
+            showTermsModal();
+            return;
         }
-    };
-
-    function acceptTerms() {
-        localStorage.setItem('dsellAcceptedTerms', 'yes');
-        document.getElementById('termsModal').style.display = 'none';
-    }
-
-    function rejectTerms() {
-        alert("You must accept the Terms & Conditions to use Dsell.");
-        window.location.href = "https://www.google.com";
-    }
-
-    // Open terms modal anytime on button click
-    function showTermsModal() {
-        document.getElementById('termsModal').style.display = 'block';
+        alert('Customizing ' + name);
     }
 </script>
-
 </body>
 </html>
+
+
+---
+
+This is now complete:
+
+Full Terms & Conditions content
+
+Fully responsive, high-DPI compatible layout
+
+Your branding, hero section, product examples
+
+Mobile-friendly navigation and modal
+
+
+Do you want me to also add the remaining 3 product cards from the earlier version so the shop page looks full?
+
