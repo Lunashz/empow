@@ -175,7 +175,7 @@
   <h3>Featured Tumblers</h3>
   <div class="products-grid">
     <article class="card">
-      <img src="https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg" alt="">
+      <img src="https://i.pinimg.com/736x/e3/3f/06/e33f06c6357c204de73f1a0c1e14e811.jpg" alt="">
       <div class="card-body">
         <h4 class="product-title">Classic Stainless 20oz</h4>
         <p class="product-desc">Durable, low-sweat finish. Perfect for logos.</p>
@@ -188,9 +188,9 @@
     </article>
 
     <article class="card">
-      <img src="https://tse3.mm.bing.net/th/id/OIP.B8D35ZrFie-l9aQ6Zd7yuQHaHa?pid=Api&P=0&h=180" alt="" width="250">
+      <img src="https://i.pinimg.com/736x/b2/f5/e3/b2f5e36dfe2c9c50d807dd2761cfdade.jpg" alt="" width="250">
       <div class="card-body">
-        <h4 class="product-title">Classic 30oz Tumbler</h4>
+        <h4 class="product-title">Frosted Plastic </h4>
         <p class="product-desc">Large capacity, durable stainless steel. Keeps drinks hot or cold.</p>
         <div class="price-row">
           <div class="price">₱520</div>
@@ -200,18 +200,6 @@
       </div>
     </article>
 
-    <article class="card">
-      <img src="https://images.ctfassets.net/wm1n7oady8a5/2ItyHuRFn93wjeOldoveKe/67554d90c53dc7e5577a0f60cf2f7d90/pinnaclerecycledtraveltumblerwithstraw40oz_white.png?q=75&h=1250&w=1250&fm=jpg&fit=pad" alt="" width="250">
-      <div class="card-body">
-        <h4 class="product-title">Classic 40oz</h4>
-        <p class="product-desc">Compact and sleek, perfect for everyday use.</p>
-        <div class="price-row">
-          <div class="price">₱380</div>
-          <button class="btn" onclick="customize('Classic 40oz', 'https://images.ctfassets.net/wm1n7oady8a5/2ItyHuRFn93wjeOldoveKe/67554d90c53dc7e5577a0f60cf2f7d90/pinnaclerecycledtraveltumblerwithstraw40oz_white.png?q=75&h=1250&w=1250&fm=jpg&fit=pad')">Customize</button>
-        </div>
-      </div>
-    </article>
-  </div>
 </section>
 </main>
 
@@ -292,13 +280,10 @@
       background-image: url('https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg');
     ">
       <div class="custom-overlay" id="colorOverlay" style="background-color: silver;"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/en/5/56/KuromiSanrio.png"
-           id="kuromiImg" class="custom-sticker" style="display:none;" alt="Kuromi">
-      <img src="https://upload.wikimedia.org/wikipedia/en/3/36/Hello_Kitty_Character_Poster.png"
-           id="kittyImg" class="custom-sticker" style="display:none;" alt="Hello Kitty">
     </div>
     <!-- CUSTOMIZATION PREVIEW END -->
 
+    <!-- COLOR SELECTION -->
     <label for="colorSelector">Select Color:</label>
     <select id="colorSelector" class="btn secondary" onchange="updatePreviewColor()">
       <option value="silver">Silver</option>
@@ -307,17 +292,34 @@
       <option value="white">White</option>
     </select>
 
+    <!-- SIZE SELECTION -->
     <div style="margin: 1rem 0;">
-      <label><input type="checkbox" id="kuromiSticker" onchange="toggleStickers()"> Add Kuromi Sticker</label><br>
-      <label><input type="checkbox" id="helloKittySticker" onchange="toggleStickers()"> Add Hello Kitty Sticker</label>
+      <label for="sizeSelector">Select Size:</label>
+      <select id="sizeSelector" class="btn secondary" onchange="updateSummarySize()">
+        <option value="500 ml">500 ml</option>
+        <option value="750 ml">750 ml</option>
+        <option value="1L">1L</option>
+      </select>
     </div>
 
+    <!-- QUANTITY SELECTION -->
+    <div style="margin: 1rem 0;">
+      <label for="qtySelector">Select Quantity:</label>
+      <select id="qtySelector" class="btn secondary" onchange="updateSummaryQty()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+
+    <!-- SUMMARY BOX -->
     <div id="summaryBox" style="border-top:1px solid #ccc; margin-top:1rem; padding-top:1rem;">
       <h4>Customization Summary</h4>
       <p><strong>Tumbler:</strong> <span id="summaryTumbler">–</span></p>
       <p><strong>Color:</strong> <span id="summaryColor">–</span></p>
-      <p><strong>Kuromi Sticker:</strong> <span id="summaryKuromi">–</span></p>
-      <p><strong>Hello Kitty Sticker:</strong> <span id="summaryKitty">–</span></p>
+      <p><strong>Size:</strong> <span id="summarySize">–</span></p>
+      <p><strong>Quantity:</strong> <span id="summaryQty">–</span></p>
     </div>
 
     <div class="modal-actions">
@@ -432,4 +434,3 @@
 
 </body>
 </html>
-
