@@ -382,45 +382,29 @@
     alert('You must accept the Terms & Conditions before placing an order.');
   }
 
-  function customize(name, imageUrl) {
-  if (!localStorage.getItem('stem12AcceptedTerms')) {
-    showTermsModal();
-    return;
-  }
-  productNameEl.textContent = name;
-  document.getElementById('summaryTumbler').textContent = name;
-  document.getElementById('colorSelector').value = 'silver';
-  document.getElementById('summaryColor').textContent = 'Silver';
-  document.getElementById('kuromiSticker').checked = false;
-  document.getElementById('helloKittySticker').checked = false;
-  document.getElementById('kuromiImg').style.display = 'none';
-  document.getElementById('kittyImg').style.display = 'none';
+   function customize(name, imageUrl) {
+    // Show a gentle reminder if terms not accepted yet (but don’t block customization)
+    if (!localStorage.getItem('stem12AcceptedTerms')) {
+      alert("⚠️ Please review and accept our Terms & Conditions before checkout.");
+    }
 
-  // Set background image based on selected product
-  document.getElementById('preview').style.backgroundImage = `url('${imageUrl}')`;
+    productNameEl.textContent = name;
+    document.getElementById('summaryTumbler').textContent = name;
+    
+    // Reset defaults
+    document.getElementById('colorSelector').value = 'silver';
+    document.getElementById('summaryColor').textContent = 'Silver';
+    document.getElementById('sizeSelector').value = '500 ml';
+    document.getElementById('summarySize').textContent = '500 ml';
+    document.getElementById('qtySelector').value = '1';
+    document.getElementById('summaryQty').textContent = '1';
 
-  updatePreviewColor();
-  customModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-  function closeCustomizeModal() {
-    customModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    // Set product preview image
+    document.getElementById('preview').style.backgroundImage = `url('${imageUrl}')`;
 
-  function updatePreviewColor() {
-    const color = document.getElementById('colorSelector').value;
-    document.getElementById('colorOverlay').style.backgroundColor = color;
-    document.getElementById('summaryColor').textContent = color.charAt(0).toUpperCase() + color.slice(1);
-  }
-
-  function toggleStickers() {
-    const kuromiChecked = document.getElementById('kuromiSticker').checked;
-    const kittyChecked = document.getElementById('helloKittySticker').checked;
-    document.getElementById('kuromiImg').style.display = kuromiChecked ? 'block' : 'none';
-    document.getElementById('kittyImg').style.display = kittyChecked ? 'block' : 'none';
-    document.getElementById('summaryKuromi').textContent = kuromiChecked ? 'Yes' : 'No';
-    document.getElementById('summaryKitty').textContent = kittyChecked ? 'Yes' : 'No';
+    updatePreviewColor();
+    customModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
   function fakeCheckout(action) {
