@@ -180,7 +180,7 @@
         <h4 class="product-title">Classic Stainless 20oz</h4>
         <p class="product-desc">Durable, low-sweat finish. Perfect for logos.</p>
         <div class="price-row">
-          <div class="price">₱420</div>
+          <div class="price">₱299-540</div>
          <button class="btn" onclick="customize('Classic Stainless 20oz', 'https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg')">Customize</button>
 
         </div>
@@ -193,7 +193,7 @@
         <h4 class="product-title">Frosted Plastic </h4>
         <p class="product-desc">Large capacity, durable stainless steel. Keeps drinks hot or cold.</p>
         <div class="price-row">
-          <div class="price">₱520</div>
+          <div class="price">₱299-590</div>
           <button class="btn" onclick="customize('Classic 30oz Tumbler', 'https://tse3.mm.bing.net/th/id/OIP.B8D35ZrFie-l9aQ6Zd7yuQHaHa?pid=Api&P=0&h=180')">Customize</button>
 
         </div>
@@ -382,31 +382,56 @@
     alert('You must accept the Terms & Conditions before placing an order.');
   }
 
-   function customize(name, imageUrl) {
-    // Show a gentle reminder if terms not accepted yet (but don’t block customization)
-    if (!localStorage.getItem('stem12AcceptedTerms')) {
-      alert("⚠️ Please review and accept our Terms & Conditions before checkout.");
-    }
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const termsModal = document.getElementById('termsModal');
+  const customModal = document.getElementById('customModal');
+  const warningModal = document.getElementById('warningModal');
+  const productNameEl = document.getElementById('productName');
 
+  window.addEventListener('load', () => {
+    if (!localStorage.getItem('stem12AcceptedTerms')) {
+      termsModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  function showTermsModal() {
+    termsModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function acceptTerms() {
+    localStorage.setItem('stem12AcceptedTerms', 'yes');
+    termsModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function rejectTerms() {
+    localStorage.removeItem('stem12AcceptedTerms');
+    termsModal.classList.remove('open');
+    document.body.style.overflow = '';
+    alert('You must accept the Terms & Conditions before placing an order.');
+  }
+
+  function customize(name, imageUrl) {
+    if (!localStorage.getItem('stem12AcceptedTerms')) {
+      showTermsModal();
+      return;
+    }
     productNameEl.textContent = name;
     document.getElementById('summaryTumbler').textContent = name;
-    
-    // Reset defaults
     document.getElementById('colorSelector').value = 'silver';
     document.getElementById('summaryColor').textContent = 'Silver';
     document.getElementById('sizeSelector').value = '500 ml';
     document.getElementById('summarySize').textContent = '500 ml';
     document.getElementById('qtySelector').value = '1';
     document.getElementById('summaryQty').textContent = '1';
-
-    // Set product preview image
     document.getElementById('preview').style.backgroundImage = `url('${imageUrl}')`;
-
     updatePreviewColor();
     customModal.classList.add('open');
     document.body.style.overflow = 'hidden';
-  }
-
+  
   function fakeCheckout(action) {
     closeCustomizeModal();
     setTimeout(() => {
