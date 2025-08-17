@@ -287,12 +287,10 @@
   const warningModal = document.getElementById('warningModal');
   const productNameEl = document.getElementById('productName');
 
-  window.addEventListener('load', () => {
-    if (!localStorage.getItem('stem12AcceptedTerms')) {
-      termsModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  });
+window.addEventListener('load', () => {
+  termsModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
 
   function showTermsModal() {
     termsModal.classList.add('open');
@@ -358,4 +356,5 @@
 
 </body>
 </html>
+
 
