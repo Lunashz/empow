@@ -259,10 +259,32 @@
   </div>
 </div>
 
+<!-- Warning Modal -->
+<div id="warningModal" class="modal">
+  <div class="modal-card">
+    <h2 style="color: var(--accent);">⚠️ Online Safety Warning</h2>
+    <p>This is a demonstration only. Always ensure you're ordering from verified shops. Be cautious of scam websites</p>
+    <hr style="margin: 1rem 0;">
+    <h3>🚨 Common Online Threats You Should Know</h3>
+    <ul class="muted" style="padding-left: 1.2rem;">
+      <li><strong>🕵️‍♂️ Fake Websites:</strong> Scammers mimic real shops. Always check the URL.</li>
+      <li><strong>🎣 Phishing Links:</strong> Don't click suspicious links in emails or SMS.</li>
+      <li><strong>📦 Too-Good-To-Be-True Deals:</strong> Flash sales from unknown sellers can be traps.</li>
+      <li><strong>📱 Dangerous Apps:</strong> Only download from official stores (App Store / Play Store).</li>
+      <li><strong>🔐 Weak Passwords:</strong> Use strong, unique passwords and enable 2FA.</li>
+    </ul>
+    <p style="margin-top: 1rem; font-weight: bold; color: var(--brand);">✅ Stay smart. Stay safe. Shop responsibly.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeWarningModal()">Got It</button>
+    </div>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   const termsModal = document.getElementById('termsModal');
   const customModal = document.getElementById('customModal');
+  const warningModal = document.getElementById('warningModal');
   const productNameEl = document.getElementById('productName');
 
   window.addEventListener('load', () => {
@@ -324,8 +346,13 @@
   function fakeCheckout(action) {
     closeCustomizeModal();
     setTimeout(() => {
-      alert("⚠️ Demo only. Order not processed.");
+      warningModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }, 300);
+  }
+  function closeWarningModal() {
+    warningModal.classList.remove('open');
+    document.body.style.overflow = '';
   }
 </script>
 
