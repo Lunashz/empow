@@ -32,7 +32,6 @@
       max-width: var(--max-width); margin: auto;
       display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;
     }
-    .brand { display: flex; gap: 0.8rem; align-items: center; }
     .logo {
       width: 48px; height: 48px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
@@ -91,24 +90,13 @@
       display: none; position: fixed; inset: 0; z-index: 999;
       background: rgba(10,10,10,0.45); padding: 28px;
     }
-    .modal.open {
-      display: block;
-    }
+    .modal.open { display: block; }
     .modal-card {
       max-width: 900px; background: white; margin: 40px auto;
       border-radius: 12px; padding: 20px;
       box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
       max-height: 80vh; overflow: auto;
     }
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      nav.primary { justify-content: center; gap: 0.25rem; }
-      .btn { flex: 1; text-align: center; }
-      .hero-card { padding: 1rem; }
-    }
-
     /* CUSTOMIZATION STYLES */
     .custom-preview {
       position: relative;
@@ -127,13 +115,6 @@
       pointer-events: none;
       mix-blend-mode: multiply;
     }
-    .custom-sticker {
-      position: absolute;
-      width: 80px;
-      pointer-events: none;
-    }
-    #kuromiImg { top: 20px; left: 50%; transform: translateX(-50%); }
-    #kittyImg { bottom: 20px; left: 50%; transform: translateX(-50%); }
   </style>
 </head>
 <body>
@@ -141,19 +122,17 @@
 <header>
   <div class="topbar">
     <div class="logo">
-  <img src="https://i.pinimg.com/736x/2b/e1/df/2be1df464e4ff461182ce1104a311574.jpg" alt="" width="250">
-</div>
-        <h1>STEM 12 A's CUSTOM CUP CO.</h1>
-        <div class="tag">Customized tumblers made with care • Local & worldwide shipping</div>
-      </div>
+      <img src="286a9c08-b816-475a-9dc3-471846b03b8e.jpg" alt="" width="250">
     </div>
-    <nav class="primary">
-      <a href="#products">Products</a>
-      <a href="#how">How It Works</a>
-      <a href="#policy" onclick="showTermsModal()">Policies</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h1>STEM 12 A's CUSTOM CUP CO.</h1>
+    <div class="tag">Customized tumblers made with care • Local & worldwide shipping</div>
   </div>
+  <nav class="primary">
+    <a href="#products">Products</a>
+    <a href="#how">How It Works</a>
+    <a href="#policy" onclick="showTermsModal()">Policies</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main class="container">
@@ -171,36 +150,35 @@
     </div>
   </section>
 
+  <!-- PRODUCTS -->
   <section id="products">
-  <h3>Featured Tumblers</h3>
-  <div class="products-grid">
-    <article class="card">
-      <img src="https://i.pinimg.com/736x/e3/3f/06/e33f06c6357c204de73f1a0c1e14e811.jpg" alt="">
-      <div class="card-body">
-        <h4 class="product-title">Classic Stainless 20oz</h4>
-        <p class="product-desc">Durable, low-sweat finish. Perfect for logos.</p>
-        <div class="price-row">
-          <div class="price">₱299-540</div>
-         <button class="btn" onclick="customize('Classic Stainless 20oz', 'https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg')">Customize</button>
-
+    <h3>Featured Tumblers</h3>
+    <div class="products-grid">
+      <article class="card">
+        <img src="https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg" alt="">
+        <div class="card-body">
+          <h4 class="product-title">Classic Stainless</h4>
+          <p class="product-desc">Durable, low-sweat finish. Perfect for logos.</p>
+          <div class="price-row">
+            <div class="price">₱299–₱359</div>
+            <button class="btn" onclick="customize('Classic Stainless', 'https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg')">Customize</button>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="card">
-      <img src="https://i.pinimg.com/736x/b2/f5/e3/b2f5e36dfe2c9c50d807dd2761cfdade.jpg" alt="" width="250">
-      <div class="card-body">
-        <h4 class="product-title">Frosted Plastic </h4>
-        <p class="product-desc">Large capacity, durable stainless steel. Keeps drinks hot or cold.</p>
-        <div class="price-row">
-          <div class="price">₱299-590</div>
-          <button class="btn" onclick="customize('Classic 30oz Tumbler', 'https://tse3.mm.bing.net/th/id/OIP.B8D35ZrFie-l9aQ6Zd7yuQHaHa?pid=Api&P=0&h=180')">Customize</button>
-
+      <article class="card">
+        <img src="https://images.ctfassets.net/wm1n7oady8a5/2ItyHuRFn93wjeOldoveKe/67554d90c53dc7e5577a0f60cf2f7d90/pinnaclerecycledtraveltumblerwithstraw40oz_white.png" alt="">
+        <div class="card-body">
+          <h4 class="product-title">Frosted Plastic</h4>
+          <p class="product-desc">Lightweight and stylish, perfect for everyday use.</p>
+          <div class="price-row">
+            <div class="price">₱299–₱359</div>
+            <button class="btn" onclick="customize('Frosted Plastic', 'https://images.ctfassets.net/wm1n7oady8a5/2ItyHuRFn93wjeOldoveKe/67554d90c53dc7e5577a0f60cf2f7d90/pinnaclerecycledtraveltumblerwithstraw40oz_white.png')">Customize</button>
+          </div>
         </div>
-      </div>
-    </article>
-
-</section>
+      </article>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -217,51 +195,22 @@
 <div id="termsModal" class="modal">
   <div class="modal-card">
     <h2>Terms & Conditions — STEM 12 A's CUSTOM CUP CO.</h2>
-    <p><strong>Business introduction</strong></p>
-    <p class="muted">STEM 12 A's Custom Cup Co. specializes in custom-printed stainless steel tumblers for personal, educational, and corporate use. We value clear communication, quality control, and timely delivery. These Terms ("Terms") describe your rights and responsibilities when ordering from us.</p>
+    <p class="muted">STEM 12 A's Custom Cup Co. specializes in custom-printed tumblers for personal, educational, and corporate use. These Terms describe your rights and responsibilities when ordering from us.</p>
     <h3>Payment Policy</h3>
     <ul class="muted">
-      <li>Accepted methods: major credit/debit cards, bank transfer, GCash, PayMaya, PayPal, and COD when offered.</li>
-      <li>Full payment or deposit required before production begins. Bulk orders require 50% deposit.</li>
+      <li>Full payment or deposit required before production begins.</li>
       <li>Refunds subject to payment processor timelines and production costs incurred.</li>
-      <li>We may decline or cancel orders suspected to be fraudulent.</li>
     </ul>
-    <h3>Shipping & Delivery Policy</h3>
+    <h3>Shipping & Delivery</h3>
     <ul class="muted">
-      <li>Production time: 3–7 business days for small orders, 7–14 days for large runs after approval.</li>
-      <li>Shipping time depends on carrier and location; tracking provided.</li>
-      <li>Shipping costs calculated at checkout; free shipping promos may exclude remote areas.</li>
+      <li>Production time: 3–7 business days for small orders, 7–14 for bulk.</li>
       <li>We are not responsible for delays caused by carriers, customs, or incorrect addresses.</li>
-      <li>Report damage/missing items within 48 hours with photos.</li>
-    </ul>
-    <h3>Correctness of Information</h3>
-    <ul class="muted">
-      <li>We try to ensure product info is accurate but variations may occur.</li>
-      <li>You must own or have rights to any artwork provided.</li>
-      <li>We may refuse orders if price or info errors occur; we will contact you if so.</li>
     </ul>
     <h3>Design Proofs & Approval</h3>
     <ul class="muted">
-      <li>We provide digital proofs; production starts after written approval.</li>
-      <li>Post-approval changes may incur extra charges and delays.</li>
+      <li>We provide digital proofs; production starts after approval.</li>
+      <li>Post-approval changes may incur extra charges.</li>
     </ul>
-    <h3>Disclaimer & Limitation of Liability</h3>
-    <ul class="muted">
-      <li>Products are sold "as is." Minor imperfections that don't affect use are not defects.</li>
-      <li>Our liability is limited to the purchase price of the product.</li>
-    </ul>
-    <h3>Intellectual Property</h3>
-    <ul class="muted">
-      <li>You warrant you own or are licensed to use any content you upload.</li>
-      <li>We may refuse to print copyrighted/trademarked material without authorization.</li>
-    </ul>
-    <h3>Privacy & Communications</h3>
-    <ul class="muted">
-      <li>We collect only necessary info to process orders and provide service.</li>
-      <li>By ordering you agree to receive order-related communications.</li>
-    </ul>
-    <h3>Acceptance</h3>
-    <p class="muted">By using this site or placing an order, you agree to these Terms and our Privacy Policy. If you do not agree, do not use this site.</p>
     <div class="modal-actions">
       <button class="btn" onclick="acceptTerms()">I Agree</button>
       <button class="btn secondary" onclick="rejectTerms()">I Do Not Agree</button>
@@ -275,15 +224,10 @@
     <h2>Customize Your Tumbler</h2>
     <p><strong id="productName"></strong></p>
 
-    <!-- CUSTOMIZATION PREVIEW START -->
-    <div class="custom-preview" id="preview" style="
-      background-image: url('https://i0.wp.com/baremugs.com/wp-content/uploads/20oz-Classic-scaled.jpg');
-    ">
+    <div class="custom-preview" id="preview">
       <div class="custom-overlay" id="colorOverlay" style="background-color: silver;"></div>
     </div>
-    <!-- CUSTOMIZATION PREVIEW END -->
 
-    <!-- COLOR SELECTION -->
     <label for="colorSelector">Select Color:</label>
     <select id="colorSelector" class="btn secondary" onchange="updatePreviewColor()">
       <option value="silver">Silver</option>
@@ -292,34 +236,19 @@
       <option value="white">White</option>
     </select>
 
-    <!-- SIZE SELECTION -->
-    <div style="margin: 1rem 0;">
-      <label for="sizeSelector">Select Size:</label>
-      <select id="sizeSelector" class="btn secondary" onchange="updateSummarySize()">
-        <option value="500 ml">500 ml</option>
-        <option value="750 ml">750 ml</option>
-        <option value="1L">1L</option>
-      </select>
-    </div>
+    <label for="sizeSelector">Select Size:</label>
+    <select id="sizeSelector" class="btn secondary" onchange="updatePrice()">
+      <option value="500">500 ml - ₱299</option>
+      <option value="750">750 ml - ₱329</option>
+      <option value="1000">1 L - ₱359</option>
+    </select>
 
-    <!-- QUANTITY SELECTION -->
-    <div style="margin: 1rem 0;">
-      <label for="qtySelector">Select Quantity:</label>
-      <select id="qtySelector" class="btn secondary" onchange="updateSummaryQty()">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-    </div>
-
-    <!-- SUMMARY BOX -->
     <div id="summaryBox" style="border-top:1px solid #ccc; margin-top:1rem; padding-top:1rem;">
       <h4>Customization Summary</h4>
       <p><strong>Tumbler:</strong> <span id="summaryTumbler">–</span></p>
       <p><strong>Color:</strong> <span id="summaryColor">–</span></p>
       <p><strong>Size:</strong> <span id="summarySize">–</span></p>
-      <p><strong>Quantity:</strong> <span id="summaryQty">–</span></p>
+      <p><strong>Price:</strong> ₱<span id="summaryPrice">299</span></p>
     </div>
 
     <div class="modal-actions">
@@ -330,31 +259,10 @@
   </div>
 </div>
 
-<!-- Cyber Threat Awareness Modal -->
-<div id="warningModal" class="modal">
-  <div class="modal-card">
-    <h2 style="color: var(--accent);">⚠️ Online Safety Warning</h2>
-    <p>This is a demonstration only. Always ensure you're ordering from verified shops. Be cautious of scam websites</p>
-    <hr style="margin: 1rem 0;">
-    <h3>🚨 Common Online Threats You Should Know</h3>
-    <ul class="muted" style="padding-left: 1.2rem;">
-      <li><strong>🕵️‍♂️ Fake Websites:</strong> Scammers mimic real shops. Always check the URL and shop only from trusted sources.</li>
-      <li><strong>🎣 Phishing Links:</strong> Don't click suspicious email or SMS links. They might steal your credentials or install malware.</li>
-      <li><strong>📦 Too-Good-To-Be-True Deals:</strong> Flash sales or giveaways from unknown sellers can be traps.</li>
-      <li><strong>📱 Dangerous Apps:</strong> Only download apps or customization tools from verified sources (like App Store / Play Store).</li>
-      <li><strong>🔐 Weak Passwords:</strong> Use strong, unique passwords and enable 2-factor authentication for online orders.</li>
-    </ul>
-    <p style="margin-top: 1rem; font-weight: bold; color: var(--brand);">✅ Stay smart. Stay safe. Shop responsibly.</p>
-    <div class="modal-actions">
-      <button class="btn" onclick="warningModal.classList.remove('open');document.body.style.overflow=''">Got It</button>
-    </div>
-  </div>
-</div>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   const termsModal = document.getElementById('termsModal');
   const customModal = document.getElementById('customModal');
-  const warningModal = document.getElementById('warningModal');
   const productNameEl = document.getElementById('productName');
 
   window.addEventListener('load', () => {
@@ -368,13 +276,11 @@
     termsModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
   function acceptTerms() {
     localStorage.setItem('stem12AcceptedTerms', 'yes');
     termsModal.classList.remove('open');
     document.body.style.overflow = '';
   }
-
   function rejectTerms() {
     localStorage.removeItem('stem12AcceptedTerms');
     termsModal.classList.remove('open');
@@ -382,61 +288,43 @@
     alert('You must accept the Terms & Conditions before placing an order.');
   }
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const termsModal = document.getElementById('termsModal');
-  const customModal = document.getElementById('customModal');
-  const warningModal = document.getElementById('warningModal');
-  const productNameEl = document.getElementById('productName');
-
-  window.addEventListener('load', () => {
-    if (!localStorage.getItem('stem12AcceptedTerms')) {
-      termsModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  });
-
-  function showTermsModal() {
-    termsModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function acceptTerms() {
-    localStorage.setItem('stem12AcceptedTerms', 'yes');
-    termsModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
   function customize(name, imageUrl) {
-    // Show a gentle reminder if terms not accepted yet (but don’t block customization)
     if (!localStorage.getItem('stem12AcceptedTerms')) {
-      alert("⚠️ Please review and accept our Terms & Conditions before checkout.");
+      showTermsModal();
+      return;
     }
-
     productNameEl.textContent = name;
     document.getElementById('summaryTumbler').textContent = name;
-    
-    // Reset defaults
     document.getElementById('colorSelector').value = 'silver';
     document.getElementById('summaryColor').textContent = 'Silver';
-    document.getElementById('sizeSelector').value = '500 ml';
-    document.getElementById('summarySize').textContent = '500 ml';
-    document.getElementById('qtySelector').value = '1';
-    document.getElementById('summaryQty').textContent = '1';
-
-    // Set product preview image
     document.getElementById('preview').style.backgroundImage = `url('${imageUrl}')`;
-
+    document.getElementById('sizeSelector').value = '500';
+    updatePrice();
     updatePreviewColor();
     customModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
-
+  function closeCustomizeModal() {
+    customModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function updatePreviewColor() {
+    const color = document.getElementById('colorSelector').value;
+    document.getElementById('colorOverlay').style.backgroundColor = color;
+    document.getElementById('summaryColor').textContent = color.charAt(0).toUpperCase() + color.slice(1);
+  }
+  function updatePrice() {
+    const size = document.getElementById('sizeSelector').value;
+    let price = 299;
+    if (size === "750") price = 329;
+    if (size === "1000") price = 359;
+    document.getElementById('summarySize').textContent = size + " ml";
+    document.getElementById('summaryPrice').textContent = price;
+  }
   function fakeCheckout(action) {
     closeCustomizeModal();
     setTimeout(() => {
-      warningModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      alert("⚠️ Demo only. Order not processed.");
     }, 300);
   }
 </script>
