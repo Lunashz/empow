@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -406,32 +406,32 @@
     termsModal.classList.remove('open');
     document.body.style.overflow = '';
   }
-
-  function rejectTerms() {
-    localStorage.removeItem('stem12AcceptedTerms');
-    termsModal.classList.remove('open');
-    document.body.style.overflow = '';
-    alert('You must accept the Terms & Conditions before placing an order.');
-  }
-
   function customize(name, imageUrl) {
+    // Show a gentle reminder if terms not accepted yet (but don’t block customization)
     if (!localStorage.getItem('stem12AcceptedTerms')) {
-      showTermsModal();
-      return;
+      alert("⚠️ Please review and accept our Terms & Conditions before checkout.");
     }
+
     productNameEl.textContent = name;
     document.getElementById('summaryTumbler').textContent = name;
+    
+    // Reset defaults
     document.getElementById('colorSelector').value = 'silver';
     document.getElementById('summaryColor').textContent = 'Silver';
     document.getElementById('sizeSelector').value = '500 ml';
     document.getElementById('summarySize').textContent = '500 ml';
     document.getElementById('qtySelector').value = '1';
     document.getElementById('summaryQty').textContent = '1';
+
+    // Set product preview image
     document.getElementById('preview').style.backgroundImage = `url('${imageUrl}')`;
+
     updatePreviewColor();
     customModal.classList.add('open');
     document.body.style.overflow = 'hidden';
-  
+  }
+
+
   function fakeCheckout(action) {
     closeCustomizeModal();
     setTimeout(() => {
